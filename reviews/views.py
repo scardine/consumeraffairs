@@ -1,3 +1,4 @@
+from django.views.generic import TemplateView
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from ipware import get_client_ip
@@ -47,3 +48,7 @@ class CompanyViewSet(viewsets.ModelViewSet):
         if self.action == 'retrieve':
             return CompanyDetailSerializer
         return CompanySerializer
+
+
+class IndexView(TemplateView):
+    template_name = 'reviews/index.html'

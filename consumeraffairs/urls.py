@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_swagger.views import get_swagger_view
 
+from reviews.views import IndexView
+
 schema_view = get_swagger_view(title='ConsumerAffairs Code Challenge')
 
 urlpatterns = [
-    path('api-docs/v1/', schema_view),
+    path('', IndexView.as_view(), name='home'),
+    path('api-docs/v1/', schema_view, name='swagger'),
     path('api-auth/', include('rest_framework.urls')),
     path('api/v1/', include('reviews.urls')),
     path('admin/', admin.site.urls),
