@@ -76,10 +76,10 @@
                 </a>
             </li>
             <li>
-                Users are able to <a href="{% url 'api-root' %}reviews">submit reviews</a> to the API
+                Users are able to <a href="{% url 'review-list' %}">submit reviews</a> to the API
             </li>
             <li>
-                Users are able to retrieve reviews that they submitted
+                Users are able to <a href="{% url 'review-list' %}">retrieve reviews</a> that they submitted
             </li>
             <li>
                 Users <a href="https://github.com/scardine/consumeraffairs/blob/master/reviews/views.py#L15">cannot see reviews submitted by other users</a>
