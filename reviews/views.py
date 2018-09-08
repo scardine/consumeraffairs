@@ -9,12 +9,15 @@ from reviews.serializers import ReviewCreateSerializer, ReviewListSerializer, Co
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
-
     def get_queryset(self):
         if self.action in ('list', 'retrieve'):
             return Review.objects.filter(author=self.request.user)
         return Review.objects
+
+    def get_permissions(self):
+        if self.action in ('list', 'retrieve', 'create'):
+            return IsAuthenticated(),
+        return IsAdminUser(),  # root can update/delete any record
 
     def get_serializer_class(self):
         if self.action in ('create', 'update', 'partial_update'):
