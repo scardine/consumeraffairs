@@ -1,11 +1,17 @@
+from django.db.models import Avg
 from rest_framework import serializers
 from reviews.models import Review, Company
 
 
-class ReviewCreateSerializer(serializers.ModelSerializer):
+class CompanyDetailSerializer(serializers.ModelSerializer):
+    rating = serializers.SerializerMethodField()
+
+    def get_rating(self, obj):
+        return obj.review_set.aggregate(avg=Avg('rating')).get('avg')
+
     class Meta:
-        model = Review
-        exclude = ['ip', 'author']
+        model = Company
+        fields = '__all__'
 
 
 class CompanySerializer(serializers.ModelSerializer):
@@ -14,9 +20,23 @@ class CompanySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ReviewCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        exclude = ['ip', 'author',]
+
+
 class ReviewListSerializer(serializers.ModelSerializer):
     company = CompanySerializer(many=False)
 
     class Meta:
         model = Review
-        fields = "__all__"
+        exclude = ["author", "summary", "ip"]
+
+
+class ReviewDetailSerializer(serializers.ModelSerializer):
+    company = CompanyDetailSerializer(many=False)
+
+    class Meta:
+        model = Review
+        exclude = ["author",]
