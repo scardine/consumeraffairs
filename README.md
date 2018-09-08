@@ -111,3 +111,9 @@ In order to run tests:
 Please email paulos at xtend.com.br with the problem description and/or 
 screenshot/stacktrace and call +5511989634414.
  
+I use Pycharm professional with Python 3.7 running on a Macbook pro. I
+have not tested the instructions in other platforms, let me know if you 
+find any problem - YMMV if you are using Linux or the Windows Subsystem 
+for Linux - you may have to adapt the instructions if you are using 
+Cygwin or GoW (or if you are brave enough to try to running this on Windows
+without a posix shell). 
