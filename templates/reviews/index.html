@@ -52,6 +52,7 @@
     <div class="container">
         <p>&nbsp;</p>
         <h1 class="text-center">CA Code Challenge</h1>
+        <p class="text-center">Hey guys, this is my shot at your take-home assignment - I hope you enjoy.</p>
 
         <h3>
             Backend Practical
@@ -132,9 +133,14 @@
                 Provide an <a href="{% url 'admin:index' %}">authenticated admin view</a> that allows me to view review submissions
             </li>
             <li>
-                <a href="{% url 'swagger' %}">
-                    Document the API (you must authenticate in order to see private endpoints)
-                </a>
+                Document the API (you may have to authenticate in order to see documentation about private endpoints)
+                <ul>
+                    <li>
+                        <a href="{% url 'swagger' %}">Swagger</a>
+                    </li>
+                    <li>Reflexive: use the HTTP OPTION method on the endpoint</li>
+                    <li><a href="{% url 'api-root' %}">Browse the API</a></li>
+                </ul>
             </li>
         </ul>
 

@@ -4,6 +4,9 @@ from django.db import models
 
 
 class Company(models.Model):
+    """This is a toy Company model - in a real application we probably would
+    store more information.
+    """
     name = models.CharField(max_length=64)
 
     def __str__(self):
@@ -11,6 +14,9 @@ class Company(models.Model):
 
 
 class Review(models.Model):
+    """This is the review model. In a real world application we would have a
+    user profile model as well. I'm keeping this simple for the assignment.
+    """
     RATING_VALIDATORS = [
         validators.MaxValueValidator(5, "Maximun rating is 5"),
         validators.MinValueValidator(1, "Minimun rating is 1"),

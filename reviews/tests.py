@@ -24,6 +24,7 @@ class ReviewsAPITestCase(APITestCase):
     ]
 
     def setUp(self):
+        # Lets create a couple users and reviews
         self.root = User.objects.create_superuser("root", "root@eruditorun.org", "cacc")
         self.user = User.objects.create_user("john", "john@eruditorun.org", "cacc")
         self.company = Company.objects.create(name="ConsumerAffairs")
@@ -75,7 +76,7 @@ class ReviewsAPITestCase(APITestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
-    def test_rating_between_1_n_5(self):
+    def test_rating_must_be_between_1_n_5(self):
         url = reverse('review-list')
         self.client.login(username='root', password='cacc')
         response = self.client.post(url, data={
