@@ -5,7 +5,7 @@ from reviews.models import Review, Company
 
 
 class CompanyAdmin(admin.ModelAdmin):
-    list_display = ("nome",)
+    list_display = ("name",)
 
 
 class ReviewAdmin(admin.ModelAdmin):
