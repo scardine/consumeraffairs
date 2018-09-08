@@ -29,3 +29,48 @@ Using Django, create a simple API that allows users to post and retrieve their r
 *   Document the API
 
 Organize the schema and data models in whatever manner you think makes the most sense and feel free to add any additional style and flair to the project that you'd like.
+
+# Development Environment Setup
+
+## App Setup
+
+Clone the repo:
+
+    git clone https://github.com/scardine/consumeraffairs
+    cd consumeraffairs
+    
+Create a virtual environment:
+
+    python3 -m venv .venv
+    source .venv/bin/activate
+    
+Install dependencies:
+
+    pip3 install -r requirements.txt
+
+## Data Setup
+
+Run migrations:
+
+    python3 manage.py migrate
+    
+Create a super user:
+
+    python3 manage.py create_superuser
+    
+## Running the development webserver
+
+Start a local server with:
+
+    python3 manage.py runserver
+    
+The default address/port are http://localhost:8000/ - for more information
+run:
+
+    python3 manage.py help runserver
+    
+## Testing
+
+In order to run tests:
+
+    python3 manage.py test

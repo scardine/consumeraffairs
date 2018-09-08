@@ -75,3 +75,20 @@ class ReviewsAPITestCase(APITestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
+    def test_rating_between_1_n_5(self):
+        url = reverse('review-list')
+        self.client.login(username='root', password='cacc')
+        response = self.client.post(url, data={
+            "title": "Best Company Ever",
+            "summary": LOREM,
+            "rating": 7,
+            "company": 1,
+        })
+        self.assertEqual(response.status_code, 400)
+        response = self.client.post(url, data={
+            "title": "Best Company Ever",
+            "summary": LOREM,
+            "rating": 0,
+            "company": 1,
+        })
+        self.assertEqual(response.status_code, 400)
