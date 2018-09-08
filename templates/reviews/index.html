@@ -50,7 +50,97 @@
         </div>
     </nav>
     <div class="container">
+        <p>&nbsp;</p>
         <h1 class="text-center">CA Code Challenge</h1>
+
+        <h3>
+            Backend Practical
+        </h3>
+
+        <p>
+            Using Django, create a simple API that allows users to post and retrieve their reviews.
+        </p>
+
+        <h3>
+            Acceptance Criteria
+        </h3>
+
+        <ul>
+            <li>
+                The completed assignment must be hosted in a <a href="https://github.com/scardine/consumeraffairs">git repository</a>
+            </li>
+            <li>
+                The repository must
+                <a href="https://github.com/scardine/consumeraffairs/commits/master">
+                    include commit history (e.g., more than one commit)
+                </a>
+            </li>
+            <li>
+                Users are able to <a href="{% url 'api-root' %}reviews">submit reviews</a> to the API
+            </li>
+            <li>
+                Users are able to retrieve reviews that they submitted
+            </li>
+            <li>
+                Users <a href="https://github.com/scardine/consumeraffairs/blob/master/reviews/views.py#L15">cannot see reviews submitted by other users</a>
+            </li>
+            <li>
+                Use of the API requires a unique auth token for each user
+            </li>
+            <li>
+                Submitted reviews must include, at least, the following attributes:
+                <ul>
+                    <li>
+                        Rating - <a href="https://github.com/scardine/consumeraffairs/blob/master/reviews/models.py#L11">must be between 1 - 5</a>
+                    </li>
+                    <li>
+                        Title - <a href="https://github.com/scardine/consumeraffairs/blob/master/reviews/models.py#L17">no more than 64 chars</a>
+                    </li>
+                    <li>
+                        Summary - <a href="https://github.com/scardine/consumeraffairs/blob/master/reviews/models.py#L18">no more than 10k chars</a>
+                    </li>
+                    <li>
+                        IP Address - <a href="https://github.com/scardine/consumeraffairs/blob/master/reviews/views.py#L27">IP of the review submitter</a>
+                    </li>
+                    <li>
+                        Submission date - the date the review was submitted
+                    </li>
+                    <li>
+                        Company - information about the company for which the review was submitted, can be simple text (e.g., name, company id, etc.) 
+                        or a <a href="https://github.com/scardine/consumeraffairs/blob/master/reviews/models.py#L6">separate model altogether</a>
+                    </li>
+                    <li>
+                        Reviewer Metadata - <a href="https://github.com/scardine/consumeraffairs/blob/master/reviews/views.py#L27">
+                        information about the reviewer</a>, can be simple text (e.g., name, email, reviewer id, etc.) or a separate model altogether
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Unit tests must be included providing 100% code coverage
+            </li>
+            <li>
+                Include instructions on local setup details for both “app setup” and “data setup”
+            </li>
+        </ul>
+
+        <h3>
+            Optional:
+        </h3>
+        <ul>
+            <li>
+                Provide an <a href="{% url 'admin:index' %}">authenticated admin view</a> that allows me to view review submissions
+            </li>
+            <li>
+                <a href="{% url 'swagger' %}">
+                    Document the API
+                </a>
+            </li>
+        </ul>
+
+        <p>
+            Organize the schema and data models in whatever manner you think makes the most sense and feel free to add any additional style and flair to the project that you'd like.
+        </p>
+
 
     </div>
 {% block javascript_bottom %}
