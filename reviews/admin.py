@@ -10,6 +10,9 @@ class CompanyAdmin(admin.ModelAdmin):
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ("date_submitted", "author", "title", "company", "rating")
+    list_filter = ("rating",)
+    search_fields = ("company", "author", "title",)
+    date_hierarchy = "date_submitted"
 
 
 admin.site.register(Company, CompanyAdmin)
