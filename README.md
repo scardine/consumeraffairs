@@ -64,7 +64,7 @@ Start a local server with:
 
     python3 manage.py runserver
     
-The default address/port are http://localhost:8000/ - for more information
+The default address/port is http://localhost:8000/ - for more information
 run:
 
     python3 manage.py help runserver
