@@ -48,6 +48,7 @@ Install dependencies:
 
     $ pip3 install -r requirements.txt
 
+
 ## Data Setup
 
 Run migrations:
@@ -57,6 +58,13 @@ Run migrations:
 Create a super user:
 
     $ python3 manage.py createsuperuser
+    
+Optionally you can load some fake data created with Faker (this will create
+a superuser root):
+
+    $ python3 manage.py loaddata reviews/fixtures/fakedata.json
+    $ python3 manage.py changepassword root
+    
     
 ## Token authentication
     
@@ -73,8 +81,10 @@ you want to create them in batch:
     >>> from rest_framework.authtoken.models import Token
     >>> from reviews.models import *
     >>> User = get_user_model()
-    >>> for u in User.objects.filter(auth_token=None): Token.objects.create(user=u)
+    >>> for u in User.objects.filter(auth_token=None): 
+        print(u.username, Token.objects.create(user=u))
     >>> exit()
+
     
 ## Running the development webserver
 
@@ -87,11 +97,13 @@ run:
 
     $ python3 manage.py help runserver
     
+    
 ## Testing
 
 In order to run tests:
 
     $ python3 manage.py test
+    
     
     
 ## Support and Troubleshooting
