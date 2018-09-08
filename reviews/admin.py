@@ -5,11 +5,11 @@ from reviews.models import Review, Company
 
 
 class CompanyAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("nome",)
 
 
 class ReviewAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("date_submitted", "author", "title", "company", "rating")
 
 
 admin.site.register(Company, CompanyAdmin)
