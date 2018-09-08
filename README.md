@@ -74,3 +74,10 @@ run:
 In order to run tests:
 
     python3 manage.py test
+    
+    
+## Support and Troubleshooting
+
+Please email paulos at xtend.com.br with the problem description and/or 
+screenshot/stacktrace and call +5511989634414.
+ 
