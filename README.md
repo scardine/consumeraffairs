@@ -36,44 +36,62 @@ Organize the schema and data models in whatever manner you think makes the most 
 
 Clone the repo:
 
-    git clone https://github.com/scardine/consumeraffairs
-    cd consumeraffairs
+    $ git clone https://github.com/scardine/consumeraffairs
+    $ cd consumeraffairs
     
 Create a virtual environment:
 
-    python3 -m venv .venv
-    source .venv/bin/activate
+    $ python3 -m venv .venv
+    $ source .venv/bin/activate
     
 Install dependencies:
 
-    pip3 install -r requirements.txt
+    $ pip3 install -r requirements.txt
 
 ## Data Setup
 
 Run migrations:
 
-    python3 manage.py migrate
+    $ python3 manage.py migrate
     
 Create a super user:
 
-    python3 manage.py create_superuser
+    $ python3 manage.py createsuperuser
+    
+## Token authentication
+    
+For clients to authenticate, the token key should be included in the 
+Authorization HTTP header. The key should be prefixed by the string literal "Token", 
+with whitespace separating the two strings. For example:
+
+    Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b    
+
+You can create authentication tokens using the admin web interface. If
+you want to create them in batch:
+
+    $ python manage.py shell
+    >>> from rest_framework.authtoken.models import Token
+    >>> from reviews.models import *
+    >>> User = get_user_model()
+    >>> for u in User.objects.filter(auth_token=None): Token.objects.create(user=u)
+    >>> exit()
     
 ## Running the development webserver
 
 Start a local server with:
 
-    python3 manage.py runserver
+    $ python3 manage.py runserver
     
 The default address/port is http://localhost:8000/ - for more information
 run:
 
-    python3 manage.py help runserver
+    $ python3 manage.py help runserver
     
 ## Testing
 
 In order to run tests:
 
-    python3 manage.py test
+    $ python3 manage.py test
     
     
 ## Support and Troubleshooting
