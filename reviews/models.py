@@ -6,6 +6,9 @@ from django.db import models
 class Company(models.Model):
     name = models.CharField(max_length=64)
 
+    def __str__(self):
+        return self.name
+
 
 class Review(models.Model):
     RATING_VALIDATORS = [
